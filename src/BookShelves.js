@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-class BookShelves extends React.Component {
+class MyBooks extends React.Component {
     render (){
         return (
             <div className="list-books">
