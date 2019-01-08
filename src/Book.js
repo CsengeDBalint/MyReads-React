@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
 
 function Book(props) {
+    const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact";
+
     return (
         
                         
         <div className="book">
             <div className="book-top">
-            
-                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `${props.singleBook.imageLinks.smallThumbnail}` }}></div>
+                <div className="book-cover"></div>
+                
+                <img src={props.singleBook.imageLinks.smallThumbnail ? props.singleBook.imageLinks.smallThumbnail : `${placeholder}`} alt={props.singleBook.title} />
                 <div className="book-shelf-changer">
                 <select>
                     <option value="move" disabled>Move to...</option>
@@ -28,8 +31,13 @@ function Book(props) {
                 rel="noopener noreferrer"
             >More information
             </a>
+
+            <div className="book-authors">currentShelf = {props.singleBook.shelf}</div>
         </div>
     )
 }
 
 export default Book;
+
+
+//style={{ width: 128, height: 193, backgroundImage: `url("${props.singleBook.imageLinks.smallThumbnail}")` }}
