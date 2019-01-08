@@ -1,7 +1,7 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
-import MyBooks from './BookShelves'
+import MyBooks from './MyBooks'
 
 class BooksApp extends React.Component {
   state = {
@@ -11,10 +11,38 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    books:[]
   }
 
-  
+  //Fetch data by the provided BooksAPI
+  /*/ in componentDidMount
+  BooksAPI.getAll()
+  .then((response) => {
+    // update state
+    // i.e. this.state.books
+  })
+  .catch((error) => {
+  console.log(error);
+  })
+  // in the render method
+  this.state.books.map((book) => {
+  return (
+  // return JSX here
+  )
+  })
+  */
+
+  componentDidMount() {
+    BooksAPI.getAll()
+        .then(data => {
+          this.setState({books : data});
+          console.log('fetched data:' + JSON.stringify(data))
+        })
+        .catch(error => {
+          console.log('An error occured during fetching data: ' + error);
+        })
+  }
 
   render() {
     return (
@@ -41,7 +69,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <MyBooks />
+          <MyBooks/>
         )}
       </div>
     )
