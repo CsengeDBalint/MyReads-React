@@ -1,7 +1,9 @@
 import React from 'react';
+import Book from './Book';
 import './App.css';
 
 class MyBooks extends React.Component {
+
     render (){
         return (
             <div className="list-books">
@@ -10,8 +12,18 @@ class MyBooks extends React.Component {
                         </div>
                         <div className="list-books-content">
                         <div>
+                        <ul>
+                        {this.props.books.map(singleBook =>(
+                        <li key={singleBook.id}>
+                            <Book 
+                            singleBook = {singleBook}
+                            />
+                        </li>
+                        ))} 
+                        
+                       </ul>
                             <div className="bookshelf">
-                            <h2 className="bookshelf-title">Currently Reading</h2>
+                            <h2 className="bookshelf-title">Presently reading</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
                                 <li>
@@ -54,7 +66,7 @@ class MyBooks extends React.Component {
                             </div>
                             </div>
                             <div className="bookshelf">
-                            <h2 className="bookshelf-title">Want to Read</h2>
+                            <h2 className="bookshelf-title">Have in mind</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
                                 <li>
@@ -97,7 +109,7 @@ class MyBooks extends React.Component {
                             </div>
                             </div>
                             <div className="bookshelf">
-                            <h2 className="bookshelf-title">Read</h2>
+                            <h2 className="bookshelf-title">Already read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
                                 <li>

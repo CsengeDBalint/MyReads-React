@@ -69,7 +69,9 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <MyBooks/>
+          <MyBooks
+            books = {this.state.books}
+            />
         )}
       </div>
     )
