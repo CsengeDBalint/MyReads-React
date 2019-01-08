@@ -5,6 +5,13 @@ import './App.css';
 class MyBooks extends React.Component {
 
     render (){
+
+        const bookShelves = [
+            'currentlyReading',
+            'wantToRead',
+            'read',
+            'none'
+        ]
         return (
             <div className="list-books">
                         <div className="list-books-title">
@@ -12,18 +19,25 @@ class MyBooks extends React.Component {
                         </div>
                         <div className="list-books-content">
                         <div>
-                        {this.props.books.map(singleBook =>(
-                            <Book 
-                                key={singleBook.id}
-                                singleBook = {singleBook}
-                            />
-                        ))} 
+                        
                         
                     
                             <div className="bookshelf">
                             <h2 className="bookshelf-title">Presently reading </h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
+                                {this.props.books.map(singleBook =>(
+                                    (singleBook.shelf === bookShelves[0]) &&(
+                                    <li key={singleBook.id}>
+                                    <Book 
+                                        key={singleBook.id}
+                                        singleBook = {singleBook}
+                                        currentShelf = {bookShelves[0]}
+                                    />
+                                    </li>
+                                    )
+                                ))}
+
                                 <li>
                                     <div className="book">
                                     <div className="book-top">
@@ -67,6 +81,17 @@ class MyBooks extends React.Component {
                             <h2 className="bookshelf-title">Have in mind</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
+                                {this.props.books.map(singleBook =>(
+                                    (singleBook.shelf === bookShelves[1]) &&(
+                                    <li key={singleBook.id}>
+                                    <Book 
+                                        key={singleBook.id}
+                                        singleBook = {singleBook}
+                                        currentShelf = {bookShelves[1]}
+                                    />
+                                    </li>
+                                    )
+                                ))}
                                 <li>
                                     <div className="book">
                                     <div className="book-top">
@@ -110,6 +135,17 @@ class MyBooks extends React.Component {
                             <h2 className="bookshelf-title">Already read</h2>
                             <div className="bookshelf-books">
                                 <ol className="books-grid">
+                                {this.props.books.map(singleBook =>(
+                                    (singleBook.shelf === bookShelves[2]) &&(
+                                    <li  key={singleBook.id}>
+                                    <Book 
+                                        key={singleBook.id}
+                                        singleBook = {singleBook}
+                                        currentShelf = {bookShelves[2]}
+                                    />
+                                    </li>
+                                    )
+                                ))}
                                 <li>
                                     <div className="book">
                                     <div className="book-top">
