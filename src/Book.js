@@ -1,4 +1,5 @@
 import React from 'react';
+import ShelfChanger from './ShelfChanger';
 
 function Book(props) {
     const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact";
@@ -8,15 +9,7 @@ function Book(props) {
             <div className="book-top">
                 <div className="book-cover"></div>
                 <img src={props.singleBook.imageLinks.smallThumbnail ? props.singleBook.imageLinks.smallThumbnail : `${placeholder}`} alt={props.singleBook.title} />
-                <div className="book-shelf-changer">
-                <select>
-                    <option value="move" disabled>Select...</option>
-                    <option value="currentlyReading">Presently reading</option>
-                    <option value="wantToRead">Have in mind</option>
-                    <option value="read">Already read</option>
-                    <option value="none">None</option>
-                </select>
-                </div>
+                <ShelfChanger />
             </div>
             <div className="book-title">{props.singleBook.title}</div>
             <div className="book-authors">{props.singleBook.authors}</div>
