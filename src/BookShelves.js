@@ -166,4 +166,4 @@ class MyBooks extends React.Component {
         )
     }
 }
-export default BookShelves
+export default MyBooks
