@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
         })
   }
 
-  changeShelf =()=> {
+  changeShelf =(book,shelf)=> {
     BooksAPI.update()
       .then(response =>{
         this.setState({currentShelf:response})
@@ -54,6 +54,7 @@ class BooksApp extends React.Component {
           <MyBooks
             books = {this.state.books}
             changeShelf = {this.changeShelf}
+            currentShelf = {this.state.currentShelf}
             />
         )}/>
       </div>
