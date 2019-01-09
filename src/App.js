@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
         })
   }
 
-  /*changeShelf =()=> {
+  changeShelf =()=> {
     BooksAPI.update()
       .then(response =>{
         this.setState({currentShelf:response})
@@ -38,17 +38,22 @@ class BooksApp extends React.Component {
         console.log('An error occured during update shelf data: ' + error);
       })
     }
-  */
+  
 
 
   render() {
     return (
       <div className="app">
-        <Route exact path='/Search' component={Search}/>
+        <Route exact path='/Search' render={()=> (
+          <Search
+            books = {this.state.books}
+            changeShelf = {this.changeShelf}
+            />
+        )}/>
         <Route exact path='/' render={()=> (
           <MyBooks
             books = {this.state.books}
-            
+            changeShelf = {this.changeShelf}
             />
         )}/>
       </div>
