@@ -1,6 +1,7 @@
-import React from 'react';
-import Book from './Book';
-import './App.css';
+import React from 'react'
+import Book from './Book'
+import {Link} from 'react-router-dom'
+import './App.css'
 
 class MyBooks extends React.Component {
 
@@ -206,7 +207,9 @@ class MyBooks extends React.Component {
                         </div>
                         </div>
                         <div className="open-search">
-                        <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+                        <Link to="/Search">
+                            <button>Add a book</button>
+                        </Link>
                         </div>
                     </div>
         )
