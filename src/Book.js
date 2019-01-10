@@ -3,13 +3,17 @@ import ShelfChanger from './ShelfChanger';
 
 function Book(props) {
     const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact";
-
+   
     return (           
         <div className="book">
             <div className="book-top">
                 <div className="book-cover"></div>
                 <img src={props.singleBook.imageLinks.smallThumbnail ? props.singleBook.imageLinks.smallThumbnail : `${placeholder}`} alt={props.singleBook.title} />
-                <ShelfChanger />
+                <ShelfChanger
+                    changeShelf = {props.changeShelf}
+                    book = {props.singleBook}
+                    shelf = {props.currentShelf}
+                />
             </div>
             <div className="book-title">{props.singleBook.title}</div>
             <div className="book-authors">{props.singleBook.authors}</div>

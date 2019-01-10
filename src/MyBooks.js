@@ -34,6 +34,7 @@ class MyBooks extends React.Component {
                                         key={singleBook.id}
                                         singleBook = {singleBook}
                                         currentShelf = {bookShelves[0]}
+                                        changeShelf = {this.props.changeShelf}
                                     />
                                     </li>
                                     )

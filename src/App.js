@@ -14,8 +14,7 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      
     showSearchPage: false,*/
-    books:[],
-    currentShelf: ''
+    books:[]
   }
 
   componentDidMount() {
@@ -30,9 +29,17 @@ class BooksApp extends React.Component {
   }
 
   changeShelf =(book,shelf)=> {
-    BooksAPI.update()
+    BooksAPI.update(book, shelf)
       .then(response =>{
-        this.setState({currentShelf:response})
+        console.log(` "${book.title}" moving to: "${shelf}" `);
+        BooksAPI.getAll()
+          .then(data => {
+            this.setState({books : data});
+          })
+          .catch(error => {
+            console.log('An error occured during updating data: ' + error);
+          })
+      
       })
       .catch(error => {
         console.log('An error occured during update shelf data: ' + error);
@@ -54,7 +61,6 @@ class BooksApp extends React.Component {
           <MyBooks
             books = {this.state.books}
             changeShelf = {this.changeShelf}
-            currentShelf = {this.state.currentShelf}
             />
         )}/>
       </div>
