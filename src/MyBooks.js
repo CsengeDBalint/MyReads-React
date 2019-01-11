@@ -6,7 +6,6 @@ import './App.css'
 class MyBooks extends React.Component {
 
     render (){
-
         const bookShelves = [
             'currentlyReading',
             'wantToRead',
@@ -20,9 +19,6 @@ class MyBooks extends React.Component {
                         </div>
                         <div className="list-books-content">
                         <div>
-                        
-                        
-                    
                             <div className="bookshelf">
                             <h2 className="bookshelf-title">Presently reading </h2>
                             <div className="bookshelf-books">

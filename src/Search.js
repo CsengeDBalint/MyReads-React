@@ -10,8 +10,8 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          query: '',
-          searchedBookList: [] 
+          query: '', 
+          searchedBookList: []  
         
         }
       }
@@ -20,12 +20,15 @@ class Search extends React.Component {
         this.setState({ query: query })
         this.searchBooks(query)
     }  
-
+    /*
     clearQuery = () => {
         this.setState({searchedBookList: ''})
     }
-
+    */
     searchBooks = (query) => {
+        //If there is a list returned by the expression the user loooking for
+        //filter by book title or author
+        //When there is not any list, return nothing
         query? (BooksAPI.search(query)
                 .then((searchedBookList)=> {
                     (searchedBookList.length) ? 
@@ -41,6 +44,7 @@ class Search extends React.Component {
     }
   
     render(){
+        //The list of the books that match sort by title
         this.state.searchedBookList.sort(sortBy('title'));
         return(
             <div className="search-books">

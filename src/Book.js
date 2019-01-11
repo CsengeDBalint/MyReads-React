@@ -3,6 +3,7 @@ import ShelfChanger from './ShelfChanger'
 
 
 function Book(props) {
+    //Use placeholder in the case there is not any shmall book cover
     const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact"; 
     
    

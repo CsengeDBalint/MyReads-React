@@ -17,6 +17,7 @@ class BooksApp extends React.Component {
     books:[]
   }
 
+  //Fetch books from backend server
   componentDidMount() {
     BooksAPI.getAll()
         .then(data => {
@@ -28,10 +29,10 @@ class BooksApp extends React.Component {
         })
   }
 
+  //Update state when the user select a different shelf
   changeShelf =(book,shelf)=> {
     BooksAPI.update(book, shelf)
       .then(response =>{
-        console.log(` "${book.title}" moving to: "${shelf}" `);
         BooksAPI.getAll()
           .then(data => {
             this.setState({books : data});
