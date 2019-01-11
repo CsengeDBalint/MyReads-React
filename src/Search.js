@@ -3,6 +3,8 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Link} from 'react-router-dom'
 import Book from './Book'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class Search extends React.Component {
     constructor(props) {
@@ -22,12 +24,19 @@ class Search extends React.Component {
     searchBooks = (query) => {
         query? (BooksAPI.search(query)
                 .then((searchedBookList)=> {
-                    this.setState({searchedBookList:searchedBookList}) 
-                })
+                    (searchedBookList.length) ? 
+                        ((this.state.searchedBookList.filter((book) => {
+                            const match = new RegExp(escapeRegExp(this.state.query), 'i');
+                            match.test(book.title) || match.test(book.authors)
+                            })) && this.setState ({searchedBookList:searchedBookList})
+                        )
+                        : this.setState({searchedBookList: []})
+                    })
             ) 
             : this.setState({searchedBookList: []})
     }
     render(){
+        this.state.searchedBookList.sort(sortBy('title'));
         return(
             <div className="search-books">
             <div className="search-books-bar">
