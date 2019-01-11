@@ -22,14 +22,12 @@ function Book(props) {
             <div className="book-authors">{props.singleBook.authors}</div>
             <div className="book-authors">{props.singleBook.publishedDate}</div>
             <a
-                className="book-authors"
+                className="book-link"
                 href={props.singleBook.infoLink}
                 target="_blank"
                 rel="noopener noreferrer"
             >More information
             </a>
-
-            <div className="book-authors">currentShelf = {props.singleBook.shelf}</div>
         </div>
     )
 }
