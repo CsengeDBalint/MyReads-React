@@ -17,24 +17,29 @@ class Search extends React.Component {
       }
     
     updateQuery = (query) => {
-        this.setState({ query: query.trim() })
+        this.setState({ query: query })
         this.searchBooks(query)
     }  
+
+    clearQuery = () => {
+        this.setState({searchedBookList: ''})
+    }
 
     searchBooks = (query) => {
         query? (BooksAPI.search(query)
                 .then((searchedBookList)=> {
                     (searchedBookList.length) ? 
-                        ((this.state.searchedBookList.filter((book) => {
+                        (this.state.searchedBookList.filter((book) => {
                             const match = new RegExp(escapeRegExp(this.state.query), 'i');
                             match.test(book.title) || match.test(book.authors)
-                            })) && this.setState ({searchedBookList:searchedBookList})
+                            }) && this.setState ({searchedBookList:searchedBookList})
                         )
                         : this.setState({searchedBookList: []})
                     })
             ) 
             : this.setState({searchedBookList: []})
     }
+  
     render(){
         this.state.searchedBookList.sort(sortBy('title'));
         return(
@@ -57,9 +62,6 @@ class Search extends React.Component {
 
               </div>
             </div>
-          
-                
-            
             <div className="search-books-results">
             {this.state.searchedBookList.length !== 0 && (
                      <div className="search-book-results-number">
@@ -77,7 +79,6 @@ class Search extends React.Component {
                   </li>)
               })
             }
-                
               </ol>
             </div>
           </div>
@@ -87,11 +88,3 @@ class Search extends React.Component {
     
 export default Search
 
-/* TODO:
-1. in state : BooksApi.search() books
-2. get books with BooksApi.search()
-3. solve when search input is empty
-4. add controlled component
-5. shelfChanger should work
-6. default currentShelf:'none' EXCEPT MyBooks books
-*/
