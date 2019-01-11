@@ -3,8 +3,7 @@ import ShelfChanger from './ShelfChanger'
 
 
 function Book(props) {
-    const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact";
-    //require('./icons/placeholder') 
+    const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact"; 
     
    
     return (           
