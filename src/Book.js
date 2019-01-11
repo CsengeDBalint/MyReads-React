@@ -1,14 +1,17 @@
-import React from 'react';
-import ShelfChanger from './ShelfChanger';
+import React from 'react'
+import ShelfChanger from './ShelfChanger'
+
 
 function Book(props) {
     const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact";
+    //require('./icons/placeholder') 
+    
    
     return (           
         <div className="book">
             <div className="book-top">
                 <div className="book-cover"></div>
-                <img src={props.singleBook.imageLinks.smallThumbnail ? props.singleBook.imageLinks.smallThumbnail : `${placeholder}`} alt={props.singleBook.title} />
+                <img src={props.singleBook.imageLinks? props.singleBook.imageLinks.smallThumbnail : `${placeholder}`} alt={props.singleBook.title} />
                 <ShelfChanger
                     changeShelf = {props.changeShelf}
                     book = {props.singleBook}
