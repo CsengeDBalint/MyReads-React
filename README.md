@@ -1,5 +1,5 @@
 # MyReads: A Book Lending App
-Google [Front-End Web Developer Nanodegree] Scholarship at Udacity(https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) - Project 7
+Google [Front-End Web Developer Nanodegree] Scholarship at Udacity (https://eu.udacity.com/course/front-end-web-developer-nanodegree--nd001) - Project 7
 
 ## Table of Contents
   
@@ -14,7 +14,7 @@ Google [Front-End Web Developer Nanodegree] Scholarship at Udacity(https://eu.ud
 
 ## Project
 
-This project was bootstrapped with[Create React App](https://github.com/facebookincubator/create-react-app) and using the [starter template](https://github.com/udacity/reactnd-project-myreads-starter) provided by Udacity.
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and using the [starter template](https://github.com/udacity/reactnd-project-myreads-starter) provided by Udacity.
 
 This one-page-application is a book organising app. The user can organise his books via a book-switch on three shelves:
 -Presently Reading
