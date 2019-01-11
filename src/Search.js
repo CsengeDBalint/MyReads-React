@@ -57,7 +57,15 @@ class Search extends React.Component {
 
               </div>
             </div>
+          
+                
+            
             <div className="search-books-results">
+            {this.state.searchedBookList.length !== 0 && (
+                     <div className="search-book-results-number">
+                        <p>Your search revealed {this.state.searchedBookList.length} books.</p>
+                    </div>
+                )}
               <ol className="books-grid">
               {this.state.searchedBookList.map(singleBook => {
                   return (<li  key={singleBook.id}>
