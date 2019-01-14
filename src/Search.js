@@ -31,15 +31,15 @@ class Search extends React.Component {
         //When there is not any list, return nothing
         query? (BooksAPI.search(query)
                 .then((searchedBookList)=> {
-                    (searchedBookList.length) ? 
-                        (this.state.searchedBookList.filter((book) => {
-                            const match = new RegExp(escapeRegExp(this.state.query), 'i');
-                            match.test(book.title) || match.test(book.authors)
-                            }) && this.setState ({searchedBookList:searchedBookList})
-                        )
+                     ((searchedBookList.length)&&(query === this.state.query)) ?
+                            (this.state.searchedBookList.filter((book) => {
+                                const match = new RegExp(escapeRegExp(this.state.query), 'i');
+                                match.test(book.title) || match.test(book.authors)
+                                }) && this.setState({searchedBookList:searchedBookList})
+                            )
                         : this.setState({searchedBookList: []})
                     })
-            ) 
+                ) 
             : this.setState({searchedBookList: []})
     }
   
@@ -78,7 +78,7 @@ class Search extends React.Component {
                     <Book 
                         key={singleBook.id}
                         singleBook = {singleBook}
-                        currentShelf = {singleBook.shelf}
+                        shelf = {singleBook.shelf}
                         changeShelf = {this.props.changeShelf}/>
                   </li>)
               })
