@@ -29,13 +29,15 @@ class Search extends React.Component {
         //If there is a list returned by the expression the user loooking for
         //filter by book title or author
         //When there is not any list, return nothing
+        
         query? (BooksAPI.search(query)
                 .then((searchedBookList)=> {
-                     ((searchedBookList.length)&&(query === this.state.query)) ?
+                     ((searchedBookList.length)&&(query === this.state.query)) ? 
                             (this.state.searchedBookList.filter((book) => {
                                 const match = new RegExp(escapeRegExp(this.state.query), 'i');
                                 match.test(book.title) || match.test(book.authors)
-                                }) && this.setState({searchedBookList:searchedBookList})
+                                }) 
+                            && this.setState({searchedBookList:searchedBookList})
                             )
                         : this.setState({searchedBookList: []})
                     })
@@ -46,6 +48,9 @@ class Search extends React.Component {
     render(){
         //The list of the books that match sort by title
         this.state.searchedBookList.sort(sortBy('title'));
+        //console.log('book.id: ' +this.props.books.map(book => book.id));
+        //console.log('searchedBookList.id: ' +this.state.searchedBookList.map(searchedBook => searchedBook.id));
+
         return(
             <div className="search-books">
             <div className="search-books-bar">
@@ -73,16 +78,18 @@ class Search extends React.Component {
                     </div>
                 )}
               <ol className="books-grid">
+              
               {this.state.searchedBookList.map(singleBook => {
+                    this.props.books.map(book=> (book.id === singleBook.id)? (singleBook.shelf = book.shelf) : ('none'))
                   return (<li  key={singleBook.id}>
-                    <Book 
-                        key={singleBook.id}
-                        singleBook = {singleBook}
-                        shelf = {singleBook.shelf}
-                        changeShelf = {this.props.changeShelf}/>
-                  </li>)
-              })
-            }
+                        <Book 
+                            key={singleBook.id}
+                            singleBook = {singleBook}
+                            shelf = {singleBook.shelf}
+                            changeShelf = {this.props.changeShelf}/>
+                        </li>)
+                     })
+                }
               </ol>
             </div>
           </div>
