@@ -30,18 +30,21 @@ class Search extends React.Component {
         //filter by book title or author
         //When there is not any list, return nothing
         
-        query? (BooksAPI.search(query)
+        query? BooksAPI.search(query)
                 .then((searchedBookList)=> {
                      ((searchedBookList.length)&&(query === this.state.query)) ? 
-                            (this.state.searchedBookList.filter((book) => {
+                            (this.state.searchedBookList.filter(book => {
                                 const match = new RegExp(escapeRegExp(this.state.query), 'i');
-                                match.test(book.title) || match.test(book.authors)
-                                }) 
+                               return match.test(book.title) || match.test(book.authors)
+                            }) 
                             && this.setState({searchedBookList:searchedBookList})
                             )
                         : this.setState({searchedBookList: []})
                     })
-                ) 
+                .catch(error => {
+                    console.log('An error occured during fetching data for your search: ' + error);
+                  })
+               
             : this.setState({searchedBookList: []})
     }
   
