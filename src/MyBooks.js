@@ -29,7 +29,7 @@ class MyBooks extends React.Component {
                                     <Book 
                                         key={singleBook.id}
                                         singleBook = {singleBook}
-                                        currentShelf = {bookShelves[0]}
+                                        shelf = {bookShelves[0]}
                                         changeShelf = {this.props.changeShelf}
                                     />
                                     </li>
@@ -48,7 +48,7 @@ class MyBooks extends React.Component {
                                     <Book 
                                         key={singleBook.id}
                                         singleBook = {singleBook}
-                                        currentShelf = {bookShelves[1]}
+                                        shelf = {bookShelves[1]}
                                         changeShelf = {this.props.changeShelf}
                                     />
                                     </li>
@@ -67,7 +67,7 @@ class MyBooks extends React.Component {
                                     <Book 
                                         key={singleBook.id}
                                         singleBook = {singleBook}
-                                        currentShelf = {bookShelves[2]}
+                                        shelf = {bookShelves[2]}
                                         changeShelf = {this.props.changeShelf}
                                     />
                                     </li>
