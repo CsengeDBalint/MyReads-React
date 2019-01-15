@@ -78,7 +78,8 @@ class Search extends React.Component {
                     </div>
                 )}
               <ol className="books-grid">
-              
+              {/*Checks whether the books returned by the search appear in MyBooks component.
+                If yes, their bookshelf will be taken over.*/}
               {this.state.searchedBookList.map(singleBook => {
                     this.props.books.map(book=> (book.id === singleBook.id)? (singleBook.shelf = book.shelf) : ('none'))
                   return (<li  key={singleBook.id}>
