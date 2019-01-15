@@ -6,7 +6,7 @@ function Book(props) {
     //Use placeholder in the case there is not any shmall book cover
     const placeholder = "https://imgplaceholder.com/128x198?text=NO+COVER&font-size=24&font-family=impact"; 
     
-   
+    //console.log('shelf value: '+ props.shelf.map(singleShelf => singleShelf.shelf))
     return (           
         <div className="book">
             <div className="book-top">
@@ -15,7 +15,7 @@ function Book(props) {
                 <ShelfChanger
                     changeShelf = {props.changeShelf}
                     book = {props.singleBook}
-                    shelf = {props.currentShelf}
+                    shelf = {props.singleBook.shelf}   
                 />
             </div>
             <div className="book-title">{props.singleBook.title}</div>
@@ -33,6 +33,3 @@ function Book(props) {
 }
 
 export default Book;
-
-
-//style={{ width: 128, height: 193, backgroundImage: `url(${props.singleBook.imageLinks.smallThumbnail})` }}

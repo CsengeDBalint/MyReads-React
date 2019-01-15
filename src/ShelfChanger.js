@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ShelfChanger(props){
+    //console.log('props.shelf: ' + props.shelf.map(book => book.shelf));
     return(
         <div className="book-shelf-changer">
             <select value = {props.shelf || 'none'} onChange ={(event) =>props.changeShelf(props.book, event.target.value)} >
